@@ -1,0 +1,53 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#05070D"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity="0.34">
+    <path d="M104 504C246 325 444 250 698 278C866 297 1018 242 1110 116" stroke="url(#orbit)" stroke-width="1.5" stroke-dasharray="12 22"/>
+    <path d="M88 160C282 232 455 242 607 191C779 133 926 157 1088 280" stroke="url(#orbit2)" stroke-width="1.2" stroke-dasharray="10 18"/>
+    <circle cx="1016" cy="180" r="172" stroke="#20C8FF" stroke-opacity="0.14"/>
+    <circle cx="218" cy="488" r="132" stroke="#6D5CFF" stroke-opacity="0.14"/>
+  </g>
+  <g opacity="0.16">
+    <path d="M0 98H1200M0 196H1200M0 294H1200M0 392H1200M0 490H1200" stroke="#EEF6FF"/>
+    <path d="M112 0V630M224 0V630M336 0V630M448 0V630M560 0V630M672 0V630M784 0V630M896 0V630M1008 0V630M1120 0V630" stroke="#EEF6FF"/>
+  </g>
+  <g transform="translate(90 92)">
+    <rect width="86" height="86" rx="28" fill="#0B1422" stroke="#20C8FF" stroke-opacity="0.35"/>
+    <path d="M49.6 20.9C62.2 24.5 69.2 34.1 71.4 47.9C61 49.1 51.7 45.8 44.6 38.6C51.9 49.5 51.7 61.4 44.3 73.2C36.6 66.9 33 58.1 33.7 47.1C28.7 54.8 21 58.7 10.9 59.1C12.3 46.6 19.2 37.5 31.5 31.7C35.3 26.2 41.3 22.1 49.6 20.9Z" fill="url(#rocket)"/>
+    <circle cx="49.8" cy="35.8" r="5.8" fill="#EEF6FF" fill-opacity="0.92"/>
+  </g>
+  <text x="90" y="242" fill="#EEF6FF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="5">SPACE TECH</text>
+  <text x="90" y="330" fill="#EEF6FF" font-family="Arial, sans-serif" font-size="68" font-weight="800" letter-spacing="-1">Soluciones Tecnológicas</text>
+  <text x="90" y="402" fill="url(#text)" font-family="Arial, sans-serif" font-size="68" font-weight="800" letter-spacing="-1">y Desarrollo Web en CDMX</text>
+  <text x="92" y="474" fill="#B9C4D6" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="500">Tu tecnología siempre en órbita.</text>
+  <g transform="translate(90 522)">
+    <rect width="326" height="46" rx="23" fill="#EEF6FF" fill-opacity="0.07" stroke="#EEF6FF" stroke-opacity="0.12"/>
+    <circle cx="28" cy="23" r="6" fill="#20C8FF"/>
+    <text x="48" y="31" fill="#DDE8F5" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">www.spacetech.com.mx</text>
+  </g>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 62) rotate(55) scale(560 500)">
+      <stop stop-color="#20C8FF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#20C8FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="orbit" x1="104" y1="504" x2="1110" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20C8FF" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="#20C8FF"/>
+      <stop offset="1" stop-color="#6D5CFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="orbit2" x1="88" y1="160" x2="1088" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6D5CFF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#6D5CFF"/>
+      <stop offset="1" stop-color="#20C8FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rocket" x1="12" y1="73" x2="74" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20C8FF"/>
+      <stop offset="1" stop-color="#6D5CFF"/>
+    </linearGradient>
+    <linearGradient id="text" x1="90" y1="382" x2="940" y2="382" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20C8FF"/>
+      <stop offset="0.55" stop-color="#EEF6FF"/>
+      <stop offset="1" stop-color="#6D5CFF"/>
+    </linearGradient>
+  </defs>
+</svg>
