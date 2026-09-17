@@ -536,6 +536,25 @@ body {
   outline-offset: 4px;
 }
 
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  border-radius: .35rem;
+  background: #eefaff;
+  padding: .7rem 1rem;
+  color: #061426;
+  font-size: .875rem;
+  font-weight: 700;
+  transform: translateY(-180%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-nav {
   border-bottom: 1px solid transparent;
   background: linear-gradient(180deg, rgba(5, 10, 18, 0.72), transparent);

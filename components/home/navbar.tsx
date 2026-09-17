@@ -16,6 +16,15 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+
   return (
     <header className={`site-nav fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "site-nav-scrolled" : ""}`}>
       <nav className="mx-auto flex h-20 max-w-[90rem] items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -40,6 +49,7 @@ export function Navbar() {
             className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white lg:hidden"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -49,6 +59,7 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}

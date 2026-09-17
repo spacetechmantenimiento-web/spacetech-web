@@ -86,8 +86,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className="bg-void font-sans text-frost antialiased">{children}</body>
+    <html lang="es-MX">
+      <body className="bg-void font-sans text-frost antialiased">
+        <noscript>
+          <style>{`.premium-site [style*="opacity:0"] { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

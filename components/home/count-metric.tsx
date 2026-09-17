@@ -16,7 +16,7 @@ export function CountMetric({
 }) {
   const reduceMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
-  const [count, setCount] = useState(reduceMotion ? value : 0);
+  const [count, setCount] = useState(value);
 
   useEffect(() => {
     if (reduceMotion) {
@@ -26,6 +26,13 @@ export function CountMetric({
 
     const element = ref.current;
     if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setCount(value);
+      return;
+    }
+
+    let frame = 0;
+    setCount(0);
 
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
@@ -36,15 +43,18 @@ export function CountMetric({
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         setCount(Math.round(value * eased));
-        if (progress < 1) requestAnimationFrame(update);
+        if (progress < 1) frame = requestAnimationFrame(update);
       };
 
-      requestAnimationFrame(update);
+      frame = requestAnimationFrame(update);
       observer.disconnect();
     }, { threshold: 0.6 });
 
     observer.observe(element);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
   }, [reduceMotion, value]);
 
   return (

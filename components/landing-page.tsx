@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionConfig } from "framer-motion";
 import { BusinessSolutions } from "@/components/home/business-solutions";
 import { FinalCTA } from "@/components/home/final-cta";
 import { Footer } from "@/components/home/footer";
@@ -14,18 +15,23 @@ import { WhatsAppFloat } from "@/components/home/whatsapp-float";
 
 export function LandingPage() {
   return (
-    <main className="premium-site relative min-h-screen overflow-hidden bg-[#050608] text-white">
-      <Navbar />
-      <Hero />
-      <Services />
-      <ScrollStory />
-      <SpaceTechEcosystem />
-      <BusinessSolutions />
-      <Testimonials />
-      <Location />
-      <FinalCTA />
-      <Footer />
-      <WhatsAppFloat />
-    </main>
+    <MotionConfig reducedMotion="user">
+      <div className="premium-site relative min-h-screen overflow-hidden bg-[#050608] text-white">
+        <a href="#contenido-principal" className="skip-link">Saltar al contenido principal</a>
+        <Navbar />
+        <main id="contenido-principal">
+          <Hero />
+          <Services />
+          <ScrollStory />
+          <SpaceTechEcosystem />
+          <BusinessSolutions />
+          <Testimonials />
+          <Location />
+          <FinalCTA />
+        </main>
+        <Footer />
+        <WhatsAppFloat />
+      </div>
+    </MotionConfig>
   );
 }

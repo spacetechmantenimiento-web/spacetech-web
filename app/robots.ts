@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/"
     },
-    host: "https://www.spacetech.com.mx"
+    host: "https://www.spacetech.com.mx",
+    sitemap: "https://www.spacetech.com.mx/sitemap.xml"
   };
 }
