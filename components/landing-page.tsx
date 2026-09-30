@@ -12,6 +12,7 @@ import { Services } from "@/components/home/services";
 import { SpaceTechEcosystem } from "@/components/home/space-tech-ecosystem";
 import { Testimonials } from "@/components/home/testimonials";
 import { WhatsAppFloat } from "@/components/home/whatsapp-float";
+import { CinematicJourney } from "@/components/home/cinematic-journey";
 
 export function LandingPage() {
   return (
@@ -19,6 +20,7 @@ export function LandingPage() {
       <div className="premium-site relative min-h-screen overflow-hidden bg-[#050608] text-white">
         <a href="#contenido-principal" className="skip-link">Saltar al contenido principal</a>
         <Navbar />
+        <CinematicJourney />
         <main id="contenido-principal">
           <Hero />
           <Services />

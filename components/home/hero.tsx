@@ -31,8 +31,6 @@ export function Hero() {
   const sphereRotateY = useTransform(smoothX, [-0.5, 0.5], [-4.5, 4.5]);
   const orbitScrollY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const orbitScrollScale = useTransform(scrollYProgress, [0, 0.55, 1], [1, 1.035, 0.9]);
-  const copyScrollY = useTransform(scrollYProgress, [0, 1], [0, 44]);
-  const copyOpacity = useTransform(scrollYProgress, [0, 0.72], [1, 0.42]);
 
   return (
     <section
@@ -107,7 +105,7 @@ export function Hero() {
       </motion.div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-[90rem] items-end gap-12 px-5 pb-14 pt-12 sm:px-8 lg:px-12 lg:pb-16">
-        <motion.div style={reduceMotion ? undefined : { y: copyScrollY, opacity: copyOpacity }} initial={reduceMotion ? false : "hidden"} animate="show" variants={{ show: { transition: { staggerChildren: reduceMotion ? 0 : 0.12 } } }} className="hero-copy-stage max-w-5xl">
+        <motion.div initial={false} animate="show" className="hero-copy-stage max-w-5xl">
           <motion.p variants={fade} className="mb-8 font-space text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300/90">Space Tech · CDMX</motion.p>
           <motion.h1 variants={fade} className="hero-title font-space font-medium tracking-[-0.035em] text-white">
             Tu tecnología<br />siempre en <span className="text-gradient">órbita.</span>

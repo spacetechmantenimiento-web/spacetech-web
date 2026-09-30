@@ -25,7 +25,7 @@ export function FinalCTA() {
         <i className="final-particle final-particle-b" />
         <i className="final-particle final-particle-c" />
       </motion.div>
-      <motion.div style={reduceMotion ? undefined : { y: contentY }} initial={reduceMotion ? false : { opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: reduceMotion ? 0 : 0.8 }} className="relative z-10 mx-auto max-w-[90rem] px-5 py-28 text-center sm:px-8 sm:py-36 lg:px-12">
+      <motion.div style={reduceMotion ? undefined : { y: contentY }} className="relative z-10 mx-auto max-w-[90rem] px-5 py-28 text-center sm:px-8 sm:py-36 lg:px-12">
         <p className="section-kicker">El siguiente movimiento</p>
         <h2 className="mx-auto mt-7 max-w-5xl font-space text-5xl font-medium leading-[0.98] tracking-[-0.04em] text-white sm:text-7xl lg:text-8xl">Pongamos tu tecnología<br /><span className="text-gradient">en órbita.</span></h2>
         <p className="mx-auto mt-7 max-w-xl leading-7 text-slate-400">Cuéntanos qué necesita tu equipo o negocio. Nosotros trazamos la ruta.</p>
