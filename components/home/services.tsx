@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
+import Link from "next/link";
 import { serviceGroups } from "@/components/home/site-data";
 
 export function Services() {
@@ -31,13 +32,14 @@ export function Services() {
               <div>
                 <h3>{group.title}</h3>
                 <p className="mt-4 max-w-xl leading-7 text-slate-400">{group.description}</p>
+                {index === 0 && <Link href="/soporte-tecnico" className="footer-contact-primary mt-6">Explorar soporte técnico <ArrowUpRight className="size-4" aria-hidden /></Link>}
               </div>
               <div className="grid gap-3">
                 {group.items.map((item) => (
                   <span key={item} className="flex items-center gap-3 text-sm text-slate-300"><Check className="size-4 text-cyan-300" aria-hidden />{item}</span>
                 ))}
               </div>
-              <a href="#contacto" className="service-arrow" aria-label={`Conocer ${group.eyebrow}`}><ArrowUpRight className="size-5" /></a>
+              <a href={index === 0 ? "/soporte-tecnico" : "#contacto"} className="service-arrow" aria-label={`Conocer ${group.eyebrow}`}><ArrowUpRight className="size-5" /></a>
             </motion.article>
           ))}
         </div>

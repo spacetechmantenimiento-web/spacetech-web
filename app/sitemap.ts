@@ -7,6 +7,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date("2026-09-17"),
       changeFrequency: "monthly",
       priority: 1
+    },
+    {
+      url: "https://www.spacetech.com.mx/soporte-tecnico",
+      lastModified: new Date("2026-09-30"),
+      changeFrequency: "monthly",
+      priority: 0.8
     }
   ];
 }
