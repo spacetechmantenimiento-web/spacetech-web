@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
+import { motion, useInView, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
 import { whatsappUrl } from "@/components/home/site-data";
 import { CountMetric } from "@/components/home/count-metric";
 
@@ -17,25 +18,38 @@ const particles = [
 ];
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const inView = useInView(heroRef);
   const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
   const smoothX = useSpring(pointerX, { stiffness: 70, damping: 20 });
   const smoothY = useSpring(pointerY, { stiffness: 70, damping: 20 });
-  const sphereX = useTransform(smoothX, [-0.5, 0.5], [-14, 14]);
-  const sphereY = useTransform(smoothY, [-0.5, 0.5], [-10, 10]);
+  const sphereX = useTransform(smoothX, [-0.5, 0.5], [-18, 18]);
+  const sphereRotateX = useTransform(smoothY, [-0.5, 0.5], [3.5, -3.5]);
+  const sphereRotateY = useTransform(smoothX, [-0.5, 0.5], [-4.5, 4.5]);
+  const orbitScrollY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const orbitScrollScale = useTransform(scrollYProgress, [0, 0.55, 1], [1, 1.035, 0.9]);
+  const copyScrollY = useTransform(scrollYProgress, [0, 1], [0, 44]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.72], [1, 0.42]);
 
   return (
     <section
+      ref={heroRef}
       id="inicio"
+      data-motion-active={inView && !reduceMotion}
       className="hero-stage relative flex min-h-[100svh] items-center overflow-hidden pt-24"
       onPointerMove={(event) => {
-        if (reduceMotion) return;
+        if (reduceMotion || event.pointerType !== "mouse" || !window.matchMedia("(min-width: 768px) and (hover: hover) and (pointer: fine)").matches) return;
         const rect = event.currentTarget.getBoundingClientRect();
         pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
-      onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}
+      onPointerLeave={() => {
+        pointerX.set(0);
+        pointerY.set(0);
+      }}
     >
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-ambient" aria-hidden="true" />
@@ -48,8 +62,13 @@ export function Hero() {
         ))}
       </div>
 
-      <motion.div style={reduceMotion ? undefined : { x: sphereX, y: sphereY }} className="hero-orbit-visual" aria-hidden="true">
+      <motion.div
+        style={reduceMotion ? undefined : { x: sphereX, y: orbitScrollY, scale: orbitScrollScale, rotateX: sphereRotateX, rotateY: sphereRotateY }}
+        className="hero-orbit-visual"
+        aria-hidden="true"
+      >
         <div className="orbital-signature">
+          <span className="orbit-depth-plane orbit-depth-plane-back" />
           <svg viewBox="0 0 720 720" role="presentation">
             <defs>
               <radialGradient id="coreGlow">
@@ -76,7 +95,11 @@ export function Hero() {
             <circle className="orbit-dot orbit-dot-b" cx="606" cy="262" r="4" />
             <circle className="orbit-dot orbit-dot-c" cx="487" cy="588" r="4" />
             <circle className="orbit-dot orbit-dot-moving" cx="360" cy="360" r="3" />
+            <path className="orbit-calibration" d="M360 68V104M360 616V652M68 360H104M616 360H652" />
           </svg>
+          <span className="orbit-depth-plane orbit-depth-plane-front" />
+          <span className="orbit-system-label orbit-system-label-a">SYSTEM / 01</span>
+          <span className="orbit-system-label orbit-system-label-b">ONLINE</span>
           <span className="orbital-particle orbital-particle-a" />
           <span className="orbital-particle orbital-particle-b" />
           <span className="orbital-particle orbital-particle-c" />
@@ -84,7 +107,7 @@ export function Hero() {
       </motion.div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-[90rem] items-end gap-12 px-5 pb-14 pt-12 sm:px-8 lg:px-12 lg:pb-16">
-        <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.12 } } }} className="max-w-5xl">
+        <motion.div style={reduceMotion ? undefined : { y: copyScrollY, opacity: copyOpacity }} initial={reduceMotion ? false : "hidden"} animate="show" variants={{ show: { transition: { staggerChildren: reduceMotion ? 0 : 0.12 } } }} className="hero-copy-stage max-w-5xl">
           <motion.p variants={fade} className="mb-8 font-space text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300/90">Space Tech · CDMX</motion.p>
           <motion.h1 variants={fade} className="hero-title font-space font-medium tracking-[-0.035em] text-white">
             Tu tecnología<br />siempre en <span className="text-gradient">órbita.</span>

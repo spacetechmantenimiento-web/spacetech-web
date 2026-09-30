@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navItems, whatsappUrl } from "@/components/home/site-data";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, restDelta: 0.001 });
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 24);
@@ -27,6 +29,7 @@ export function Navbar() {
 
   return (
     <header className={`site-nav fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "site-nav-scrolled" : ""}`}>
+      <motion.span className="site-progress" style={{ scaleX: progress }} aria-hidden="true" />
       <nav className="mx-auto flex h-20 max-w-[90rem] items-center justify-between px-5 sm:px-8 lg:px-12">
         <a href="#inicio" className="group flex items-center gap-3" aria-label="Space Tech, ir al inicio">
           <span className="brand-mark" aria-hidden="true"><span /></span>
