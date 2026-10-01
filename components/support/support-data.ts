@@ -1,4 +1,4 @@
-import { Activity, Cpu, Fan, HardDrive, Laptop, Monitor, Settings2, ShieldCheck, Wrench } from "lucide-react";
+import { Activity, Cpu, Fan, HardDrive, Laptop, Monitor, Settings2, ShieldCheck, Wrench, Gauge, Thermometer, Power, PowerOff, TriangleAlert, Database, Rocket, MemoryStick } from "lucide-react";
 import { whatsappUrl } from "@/components/home/site-data";
 
 export function supportWhatsapp(message: string) {
@@ -66,4 +66,15 @@ export const supportPrinciples = [
   { icon: ShieldCheck, text: "Atención con cita previa" },
   { icon: Activity, text: "Diagnóstico antes de intervenir" },
   { icon: Wrench, text: "Soluciones según tu equipo" }
+];
+
+export const supportProblems = [
+  { title: "Se siente lenta", icon: Gauge, clues: "SSD · RAM · Sistema", message: "mi computadora se siente lenta" },
+  { title: "Se calienta", icon: Thermometer, clues: "Ventilación · Refrigeración · Mantenimiento", message: "mi computadora se calienta" },
+  { title: "No enciende", icon: Power, clues: "Arranque · Hardware · Sistema", message: "mi computadora no enciende correctamente" },
+  { title: "Se apaga", icon: PowerOff, clues: "Temperatura · Hardware · Sistema", message: "mi computadora se apaga" },
+  { title: "Aparecen errores", icon: TriangleAlert, clues: "Software · Drivers · Sistema", message: "mi computadora presenta errores" },
+  { title: "Necesito más espacio", icon: Database, clues: "Almacenamiento · SSD · Compatibilidad", message: "necesito más espacio en mi computadora" },
+  { title: "Quiero más rendimiento", icon: Rocket, clues: "Configuración · RAM · Optimización", message: "quiero mejorar el rendimiento de mi PC" },
+  { title: "Quiero actualizarla", icon: MemoryStick, clues: "RAM · SSD · Componentes compatibles", message: "quiero actualizar mi computadora" }
 ];

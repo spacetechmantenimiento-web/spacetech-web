@@ -4,7 +4,8 @@ import { Footer } from "@/components/home/footer";
 import { WhatsAppFloat } from "@/components/home/whatsapp-float";
 import { SupportMotion } from "@/components/support/support-motion";
 import { SupportHero } from "@/components/support/support-hero";
-import { DevicesSection } from "@/components/support/devices-section";
+import { ProblemsSection } from "@/components/support/problems-section";
+import { DiagnosticSequence } from "@/components/support/diagnostic-sequence";
 import { SupportServices } from "@/components/support/support-services";
 import { CustomPcSection } from "@/components/support/custom-pc-section";
 import { SupportProcess } from "@/components/support/support-process";
@@ -58,7 +59,8 @@ export default function SupportPage() {
       <Navbar items={supportNavigation} homeHref="/" />
       <main id="contenido-soporte">
         <SupportHero photo={photos.consultation} />
-        <DevicesSection />
+        <ProblemsSection />
+        <DiagnosticSequence />
         <SupportServices />
         <CustomPcSection />
         <SupportProcess />
